@@ -1,28 +1,26 @@
-README.template
+# COMP2002 - Assignment 2 
 
-## Project Number/Title 
-
-* Authors: Your Name, and your group members’ names
-* Group name: Your Group Name
+* Authors: Lucas Owers, Oscar Robertson, Jaiden Spencer
+* Group name: Group 26
 
 ## Overview
 
-Concisely explain what the program does. If this exceeds a couple of
-sentences, you're going too far. Generally, you should be pulling this
-right from the project specification. We don't want you to just cut and
-paste, but paraphrase what is stated in the project specification.
+This program implements a thread-safe Parallel Mergesort algorithm. It also allows the user to specify how many levels deep the recursion should go.
 
 ## Manifest
 
-A listing of source files and other non-generated files, and a brief
-(one-line) explanation of the purpose of each file.
+- `Makefile`: `make` build rules
+- `mergesort.c`: Contains all program logic
+- `mergesort.h`: Function definitions for `mergesort.c`
+- `test-mergesort.c`: Program that tests the functionality of the logic in `mergesort.c`
 
 ## Building the project
 
-This section should tell the user how to build your code.  If you are
-delivering a library, where does it need to be installed, or how do you use
-it? Is this an executable, if so, how can a user get up to speed as fast as
-possible?
+You will need installed:
+- `make`
+- `gcc`
+
+Inside of WSL or Linux, run `make all` to build the testing executable, and `make clean` to clean up any build files.
 
 ## Features and usage
 
