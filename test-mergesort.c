@@ -154,7 +154,7 @@ int main(int argc, char **argv) {
 	// sort the input (and time it)
 	start_time = getMilliSeconds();
 	/* first index is 0, last index is n-1, we consider the main thread as level 0 */
-	struct argument *arg=buildArgs(0, n-1, 10);
+	struct argument *arg=buildArgs(0, n-1, 2);
 	parallel_mergesort(arg);
 	sorting_time = getMilliSeconds() - start_time;
 
