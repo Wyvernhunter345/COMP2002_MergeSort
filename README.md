@@ -20,22 +20,32 @@ You will need installed:
 - `make`
 - `gcc`
 
-Inside of WSL or Linux, run `make all` to build the testing executable, and `make clean` to clean up any build files.
+Inside of WSL or Linux, run `make all` to build the executable, and `make clean` to clean up any build files.
 
 ## Features and usage
 
-Summarise the main features of your program. It is also appropriate to
-instruct the user how to use your program.
+This program randomly generates an array of user-defined length, and sorts it recursively using Parallel Mergesort. Users can specify a recursion level for threads allowing them to observe the program's speed the more levels are added.
+
+At this stage it is not possible to manually specify an array of numbers.
 
 ## Testing
 
-This section should detail how you tested your code. Simply stating "I ran
-it a few times and it seems to work" is not sufficient. Your testing needs
-to be detailed here.
+Testing is done through the `test-mergesort` executable.
+
+To run the tests, execute the following command in your terminal:
+
+```bash
+./test-mergesort <input-size> <cutoff-level> <seed>
+```
+
+- Input Size: How many numbers the program should sort
+- Cutoff Level: How many layers deep thread recursion should go
+- Seed: The seed used for the RNG of the array
+
 
 ## Known Bugs
 
-List known bugs that you weren't able to fix (or ran out of time to fix).
+There are no known bugs at the time of submission.
 
 ## Reflection and Self Assessment
 
@@ -49,7 +59,6 @@ did the development and testing process go for you?
 
 ## Sources Used
 
-If you used any sources outside of the textbook, you should list them here. 
-If you looked something up on stackoverflow.com or you use help from AI, and 
-fail to cite it in this section, it will be considered plagiarism and dealt 
-with accordingly. So be safe CITE!
+- Code in `merge()` and `my_mergesort()` adapted from the [GeeksforGeeks implmentation](https://www.geeksforgeeks.org/c/c-program-for-merge-sort/)
+
+All other code was written by hand.
