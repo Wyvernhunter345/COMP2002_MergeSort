@@ -49,6 +49,8 @@ There are no known bugs at the time of submission.
 
 ## Reflection and Self Assessment
 
+TBD.
+
 Discuss the issues you encountered during development and testing. What
 problems did you have? What did you have to research and learn on your own?
 What kinds of errors did you get? How did you fix them?
@@ -59,6 +61,6 @@ did the development and testing process go for you?
 
 ## Sources Used
 
-- Code in `merge()` and `my_mergesort()` adapted from the [GeeksforGeeks implmentation](https://www.geeksforgeeks.org/c/c-program-for-merge-sort/)
+- Code in `merge()` and `my_mergesort()` adapted from the [GeeksforGeeks implementation](https://www.geeksforgeeks.org/c/c-program-for-merge-sort/)
 
 All other code was written by hand.
