@@ -87,37 +87,39 @@ void my_mergesort(int left, int right){
 void * parallel_mergesort(void *arg){
 	struct argument *variables = (struct argument *) arg;
 
-	// Base case
-	if (variables->level == 0)
+	// Base case (reached the cutoff level): if the current level is equal to the cutoff level, call my_mergesort() on the current subarray and return
+	if (variables->level == cutoff)
 	{
 		my_mergesort(variables->left, variables->right);
 		return NULL;
 	}
 
-	// Recursive case
+	// Recursive case (split the sub array in hakf and call parallel_mergesort() on each half): if the current level is less than the cutoff level, split the current subarray into two halves and call parallel_mergesort() on each half
 	pthread_t p1, p2;
 	
-	variables->level = variables->level - 1;
-	struct argument *var1 = variables;
-	struct argument *var2 = variables;
+	int mid = variables->left + (variables->right - variables->left) / 2;
+	struct argument *var1 = buildArgs(variables->left, mid, variables->level + 1);
+	struct argument *var2 = buildArgs(mid + 1, variables->right, variables->level + 1);
 	
 	pthread_create(&p1, NULL, parallel_mergesort, var1);
 	pthread_create(&p2, NULL, parallel_mergesort, var2);
 	pthread_join(p1, NULL);
 	pthread_join(p2, NULL);
+
+	// merge the two sorted halves of the array
+	merge(variables->left, mid, mid + 1, variables->right);
+
+	//memory cleanup: free the memory allocated for the argument structs
+	free(var1);
+	free(var2);
+
 	return NULL;
 }
 
 /* we build the argument for the parallel_mergesort function. */
 struct argument * buildArgs(int left, int right, int level){
-	typedef struct argument
-	{
-		int left;
-		int right;
-		int level;
-	} argument;
 	
-	argument *arg = malloc(sizeof(argument));
+	struct argument *arg = malloc(sizeof(struct argument));
 	arg->left = left;
 	arg->right = right;
 	arg->level = level;
